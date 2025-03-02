@@ -1,9 +1,8 @@
-import sumar from "./sumador.js";
+import saludar from "./sumador.js";
 
-describe("Sumar", () => {
-  it("deberia sumar dos numeros", () => {
-    expect(sumar(3, 2)).toEqual(5);
+describe('Función saludar', () => {
+  it('debería devolver "¡Hola!"', () => {
+    const resultado = saludar();
+    expect(resultado).toBe("¡Hola!");
   });
 });
-
-
