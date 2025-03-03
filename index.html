@@ -11,6 +11,7 @@
             <button type="button" id="saludo1-btn">Saludo Genérico</button>
             <button type="button" id="saludo2-btn">Saludo Personalizado</button>
             <button type="button" id="saludo3-btn">Saludo por horas</button>
+            <button type="button" id="saludo4-btn">Saludo por nombre y género</button>
         </form>
 
         <div id="nombre-container" style="display: none;">
@@ -18,6 +19,13 @@
             <input type="text" id="nombre" />
             <button type="button" id="enviar-nombre-btn">Enviar</button>
         </div>
+
+        <label for="genero">Género:</label>
+          <select id="genero">
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+          <option value="otro">Otro</option>
+        </select>
 
         <div id="resultado"></div>
     </div>

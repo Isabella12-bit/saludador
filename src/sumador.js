@@ -15,3 +15,17 @@ export function obtenerSaludoSegunHora(hora) {
     return "Buenas noches";
   }
 }
+
+export function saludoPersonalizadoConGenero(nombre, genero) {
+  let saludoGenero = "";
+  
+  if (genero === "masculino") {
+      saludoGenero = `¡Hola, usuario ${nombre}!`;
+  } else if (genero === "femenino") {
+      saludoGenero = `¡Hola, usuaria ${nombre}!`;
+  } else {
+      saludoGenero = `¡Hola, ${nombre}!`;
+  }
+  
+  return saludoGenero;
+}

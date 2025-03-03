@@ -1,4 +1,4 @@
-import { saludoGenerico, saludoPersonalizado, obtenerSaludoSegunHora } from "./sumador.js";
+import { saludoGenerico, saludoPersonalizado, obtenerSaludoSegunHora, saludoPersonalizadoConGenero } from "./sumador.js";
 
 describe("Funciones de saludo", () => {
     test("Saludo genérico debe ser correcto", () => {
@@ -16,4 +16,9 @@ describe("Funciones de saludo", () => {
     test("Saludo por hora", () => {
       expect(obtenerSaludoSegunHora("12")).toBe("Buenas tardes");
     });
+
+    test("Saludo por género y nombre", () => {
+      expect(saludoPersonalizadoConGenero("Juan", "masculino")).toBe("¡Hola, usuario Juan!");
+  });
+  
 });
