@@ -6,5 +6,6 @@ document.querySelector("#saludar-btn").addEventListener("click", () => {
   const edad = parseInt(document.querySelector("#edad").value.trim()) || null;
   const idioma = document.querySelector("#idioma").value;
 
-  document.querySelector("#resultado").innerHTML = `<p>${obtenerSaludo(nombre, genero, edad, idioma)}</p>`;
+  const saludo = obtenerSaludo(nombre, genero, edad, idioma);
+  document.querySelector("#resultado").innerHTML = `<p>${saludo}</p>`;
 });
