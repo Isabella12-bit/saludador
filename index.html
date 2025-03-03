@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html xml:lang="es">
-  <head>
+<head>
     <title>Bot Saludador</title>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <h1>Bot Saludador</h1>
-      
-      <form id="saludar-form">
-        <button type="submit">Saludar</button>
-      </form>
+        <h1>Bot Saludador</h1>
 
-      <div id="resultado"></div>
+        <form id="saludar-form">
+            <button type="button" id="saludo1-btn">Saludo Genérico</button>
+            <button type="button" id="saludo2-btn">Saludo Personalizado</button>
+            <button type="button" id="saludo3-btn">Saludo por horas</button>
+        </form>
+
+        <div id="nombre-container" style="display: none;">
+            <label for="nombre">Ingresa tu nombre:</label>
+            <input type="text" id="nombre" />
+            <button type="button" id="enviar-nombre-btn">Enviar</button>
+        </div>
+
+        <div id="resultado"></div>
     </div>
 
     <script type="module" src="./src/presenter.js"></script>
-  </body>
+</body>
 </html>

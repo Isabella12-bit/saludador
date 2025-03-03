@@ -1,8 +1,19 @@
-import saludar from "./sumador.js";
+import { saludoGenerico, saludoPersonalizado, obtenerSaludoSegunHora } from "./sumador.js";
 
-describe('Función saludar', () => {
-  it('debería devolver "¡Hola!"', () => {
-    const resultado = saludar();
-    expect(resultado).toBe("¡Hola!");
+describe("Funciones de saludo", () => {
+    test("Saludo genérico debe ser correcto", () => {
+        expect(saludoGenerico()).toBe("¡Hola!");
+    });
+
+    test("Saludo personalizado debe incluir el nombre", () => {
+        expect(saludoPersonalizado("Isabella")).toBe("¡Hola, Isabella!");
+    });
+
+    test("Saludo personalizado debe funcionar con otro nombre", () => {
+        expect(saludoPersonalizado("Carlos")).toBe("¡Hola, Carlos!");
+    });
+
+    test("Saludo por hora", () => {
+      expect(obtenerSaludoSegunHora("12")).toBe("Buenas tardes");
   });
 });
