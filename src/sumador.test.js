@@ -5,7 +5,7 @@ describe("Funciones de saludo", () => {
         expect(saludoGenerico()).toBe("¡Hola!");
     });
 
-    tsest("Saludo personalizado debe incluir el nombre", () => {
+    test("Saludo personalizado debe incluir el nombre", () => {
         expect(saludoPersonalizado("Isabella")).toBe("¡Hola, Isabella!");
     });
 
