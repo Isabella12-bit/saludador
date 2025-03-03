@@ -40,3 +40,14 @@ export function saludarPorEdad(nombre, edad) {
   }
   return saludo;
 }
+
+export function saludarPorIdioma(nombre, idioma = "español") {
+  let saludo = "¡Hola";
+  if (idioma === "español") {
+      return `${saludo}, ${nombre}!`;
+  } else if (idioma === "inglés") {
+      return `Hello, ${nombre}!`;
+  } else {
+      return `¡Hola, ${nombre}!`;
+  }
+}

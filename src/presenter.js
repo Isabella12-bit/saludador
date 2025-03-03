@@ -1,4 +1,4 @@
-import { saludoGenerico, saludoPersonalizado, obtenerSaludoSegunHora, saludoPersonalizadoConGenero } from "./sumador.js";
+import { saludoGenerico, saludoPersonalizado, obtenerSaludoSegunHora, saludoPersonalizadoConGenero, saludarPorIdioma } from "./sumador.js";
 
 const resultadoDiv = document.querySelector("#resultado");
 const botonSaludo1 = document.querySelector("#saludo1-btn");
@@ -6,6 +6,7 @@ const botonSaludo2 = document.querySelector("#saludo2-btn");
 const botonSaludo3 = document.querySelector("#saludo3-btn");
 const botonEnviarNombre = document.querySelector("#saludo4-btn");
 const botonSaludo5 = document.querySelector("#saludo5-btn");
+const botonSaludo6 = document.querySelector("#saludo6-btn");
 const botonSaludo4 = document.querySelector("#enviar-nombre-btn");
 const nombreContainer = document.querySelector("#nombre-container");
 const inputNombre = document.querySelector("#nombre");
@@ -13,6 +14,7 @@ const inputGenero = document.querySelector("#genero");
 const inputEdad = document.querySelector("#edad");
 const edadContainer = document.querySelector("#edad-container");
 const botonEnviarEdad = document.querySelector("#enviar-edad-btn");
+const inputIdioma = document.querySelector("#idioma");
 
 botonSaludo1.addEventListener("click", () => {
     resultadoDiv.innerHTML = `<p>${saludoGenerico()}</p>`;
@@ -66,5 +68,18 @@ botonEnviarEdad.addEventListener("click", () => {
       inputEdad.value = "";
   } else {
       resultadoDiv.innerHTML = `<p>Por favor, ingresa todos los datos correctamente.</p>`;
+  }
+});
+
+botonSaludo6.addEventListener("click", () => {
+  const nombre = inputNombre.value.trim();
+  const idioma = inputIdioma.value;
+
+  if (nombre) {
+      resultadoDiv.innerHTML = `<p>${saludarPorIdioma(nombre, idioma)}</p>`;
+      nombreContainer.style.display = "none";
+      inputNombre.value = "";
+  } else {
+      resultadoDiv.innerHTML = `<p>Por favor, ingresa tu nombre correctamente.</p>`;
   }
 });

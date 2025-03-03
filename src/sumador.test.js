@@ -1,4 +1,4 @@
-import { saludoGenerico, saludoPersonalizado, obtenerSaludoSegunHora, saludoPersonalizadoConGenero, saludarPorEdad } from "./sumador.js";
+import { saludoGenerico, saludoPersonalizado, obtenerSaludoSegunHora, saludoPersonalizadoConGenero, saludarPorEdad, saludarPorIdioma } from "./sumador.js";
 
 describe("Funciones de saludo", () => {
     test("Saludo genérico debe ser correcto", () => {
@@ -23,5 +23,9 @@ describe("Funciones de saludo", () => {
 
     test("Saludo por edad y nombre", () => {
       expect(saludarPorEdad("Juan", 33)).toBe("Hola Sr./Sra. Juan");
+    });
+
+    test("Saludo por edad y nombre", () => {
+      expect(saludarPorIdioma("Juan", "inglés")).toBe("Hello, Juan!");
     });
 });
