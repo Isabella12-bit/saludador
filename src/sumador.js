@@ -1,53 +1,29 @@
-export function saludoGenerico() {
-  return "¡Hola!";
-}
-
-export function saludoPersonalizado(nombre) {
-  return `¡Hola, ${nombre}!`;
-}
-
-export function obtenerSaludoSegunHora(hora) {
+export function obtenerSaludo(nombre, genero, edad, idioma) {
+  let saludo = "";
+  const hora = new Date().getHours();
   if (hora >= 5 && hora < 12) {
-    return "Buenos días";
+      saludo = "Buenos días";
   } else if (hora >= 12 && hora < 18) {
-    return "Buenas tardes";
+      saludo = "Buenas tardes";
   } else {
-    return "Buenas noches";
+      saludo = "Buenas noches";
   }
-}
-
-export function saludoPersonalizadoConGenero(nombre, genero) {
-  let saludoGenero = "";
-  
-  if (genero === "masculino") {
-      saludoGenero = `¡Hola, usuario ${nombre}!`;
-  } else if (genero === "femenino") {
-      saludoGenero = `¡Hola, usuaria ${nombre}!`;
-  } else {
-      saludoGenero = `¡Hola, ${nombre}!`;
+  if (nombre) {
+      if (genero === "masculino") {
+          saludo += `, usuario ${nombre}`;
+      } else if (genero === "femenino") {
+          saludo += `, usuaria ${nombre}`;
+      } else {
+          saludo += `, ${nombre}`;
+      }
   }
-  
-  return saludoGenero;
-}
-
-export function saludarPorEdad(nombre, edad) {
-  let saludo = "Hola";
-
-  if (edad > 30) {
+  if (edad && edad > 30) {
       saludo = `Hola Sr./Sra. ${nombre}`;
-  } else {
-      saludo = `Hola ${nombre}`;
   }
-  return saludo;
-}
+  if (idioma === "inglés") {
+      saludo = saludo.replace("Buenos días", "Good morning").replace("Buenas tardes", "Good afternoon").replace("Buenas noches", "Good evening");
+      saludo = saludo.replace("Hola", "Hello");
+  }
 
-export function saludarPorIdioma(nombre, idioma = "español") {
-  let saludo = "¡Hola";
-  if (idioma === "español") {
-      return `${saludo}, ${nombre}!`;
-  } else if (idioma === "inglés") {
-      return `Hello, ${nombre}!`;
-  } else {
-      return `¡Hola, ${nombre}!`;
-  }
+  return saludo;
 }

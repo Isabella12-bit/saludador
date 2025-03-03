@@ -1,31 +1,35 @@
-import { saludoGenerico, saludoPersonalizado, obtenerSaludoSegunHora, saludoPersonalizadoConGenero, saludarPorEdad, saludarPorIdioma } from "./sumador.js";
+import { obtenerSaludo } from "./sumador.js";
 
-describe("Funciones de saludo", () => {
-    test("Saludo genérico debe ser correcto", () => {
-        expect(saludoGenerico()).toBe("¡Hola!");
+describe("Función obtenerSaludo", () => {
+    test("Debe devolver un saludo genérico si no se proporciona un nombre", () => {
+        expect(obtenerSaludo("", "", null, "español")).toMatch(/Hola|Buenos días|Buenas tardes|Buenas noches/);
     });
 
-    test("Saludo personalizado debe incluir el nombre", () => {
-        expect(saludoPersonalizado("Isabella")).toBe("¡Hola, Isabella!");
+    test("Debe incluir el nombre en el saludo", () => {
+        expect(obtenerSaludo("Isabella", "", null, "español")).toMatch(/Isabella/);
     });
 
-    test("Saludo personalizado debe funcionar con otro nombre", () => {
-        expect(saludoPersonalizado("Carlos")).toBe("¡Hola, Carlos!");
+    test("Debe saludar en inglés", () => {
+        expect(obtenerSaludo("Juan", "", null, "inglés")).toMatch(/Hello|Good morning|Good afternoon|Good evening/);
     });
 
-    test("Saludo por hora", () => {
-      expect(obtenerSaludoSegunHora("12")).toBe("Buenas tardes");
+    test("Debe personalizar el saludo según el género", () => {
+        expect(obtenerSaludo("Juan", "masculino", null, "español")).toMatch(/usuario Juan/);
+        expect(obtenerSaludo("María", "femenino", null, "español")).toMatch(/usuaria María/);
     });
 
-    test("Saludo por género y nombre", () => {
-      expect(saludoPersonalizadoConGenero("Juan", "masculino")).toBe("¡Hola, usuario Juan!");
+    test("Debe agregar un trato formal si la edad es mayor a 30", () => {
+        expect(obtenerSaludo("Carlos", "", 35, "español")).toBe("Hola Sr./Sra. Carlos");
     });
 
-    test("Saludo por edad y nombre", () => {
-      expect(saludarPorEdad("Juan", 33)).toBe("Hola Sr./Sra. Juan");
-    });
-
-    test("Saludo por edad y nombre", () => {
-      expect(saludarPorIdioma("Juan", "inglés")).toBe("Hello, Juan!");
+    test("Debe cambiar el saludo según la hora", () => {
+        jest.useFakeTimers().setSystemTime(new Date(2024, 1, 1, 10)); // 10 AM
+        expect(obtenerSaludo("Juan", "", null, "español")).toMatch(/Buenos días/);
+        
+        jest.useFakeTimers().setSystemTime(new Date(2024, 1, 1, 15)); // 3 PM
+        expect(obtenerSaludo("Juan", "", null, "español")).toMatch(/Buenas tardes/);
+        
+        jest.useFakeTimers().setSystemTime(new Date(2024, 1, 1, 21)); // 9 PM
+        expect(obtenerSaludo("Juan", "", null, "español")).toMatch(/Buenas noches/);
     });
 });
