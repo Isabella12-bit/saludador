@@ -29,3 +29,14 @@ export function saludoPersonalizadoConGenero(nombre, genero) {
   
   return saludoGenero;
 }
+
+export function saludarPorEdad(nombre, edad) {
+  let saludo = "Hola";
+
+  if (edad > 30) {
+      saludo = `Hola Sr./Sra. ${nombre}`;
+  } else {
+      saludo = `Hola ${nombre}`;
+  }
+  return saludo;
+}
